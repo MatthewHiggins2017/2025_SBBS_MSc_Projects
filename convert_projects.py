@@ -26,14 +26,13 @@ def convert_tsv_to_markdown(tsv_path: Path, output_path: Path):
     }
     
     # Start building markdown content with filtering UI
-    md_content = ["<h1 style='text-align: center; font-weight: bold; margin-bottom: 20px; color: #000;'>2026 Project Allocation</h1>\n\n"]
-    md_content.append(f"<p class='project-count'>Total Projects: <span id='project-count'>{len(projects)}</span></p>\n\n")
+    md_content = ["<h1 style='text-align: center; font-weight: bold; margin-bottom: 20px; color: #000;'>2026 MSc Projects</h1>\n\n"]
     
     # Add instructional bullet points
     md_content.append(" <strong>Welcome to the 2026 MSc Project Selection for the Bioinformatics and AI in Biosciences programmes.</strong>\n")
     md_content.append("<ul class='instructions'>\n")
     md_content.append("  <li>Please review the following projects and identify those that align with your interests.</li>\n")
-    md_content.append("  <li>Use the <b>search bar</b> in the top right to filter projects by keywords.</li>\n")
+    md_content.append("  <li>Use the <b>search and filter options below</b> to find projects by keywords or programme.</li>\n")
     md_content.append("  <li>We strongly recommend contacting the project supervisor to <b>arrange a meeting</b> before applying.</li>\n")
     # Fix closing bold tag so the rest of the page is not bold
     md_content.append("  <li>Once you have reviewed all projects, please submit your choices via <b><a href='#' target='_blank'>this link</a></b>.</li>\n")
@@ -53,6 +52,7 @@ def convert_tsv_to_markdown(tsv_path: Path, output_path: Path):
     md_content.append("      <button class='filter-btn' onclick='filterProjects(this, \"bioinf\")'>Bioinformatics</button>\n")
     md_content.append("    </div>\n")
     md_content.append("  </div>\n")
+    md_content.append(f"  <p class='project-count'>Total Projects: <span id='project-count'>{len(projects)}</span></p>\n")
     md_content.append("</div>\n")
     md_content.append("<div id='projects-container'>\n")
     
