@@ -1,0 +1,39 @@
+site_name: QMUL 2025 MSc Project Allocation 
+
+theme:
+  name: material
+  language: en
+  palette:
+    primary: custom
+    accent: custom
+  features:
+    - content.tooltips
+    - navigation.instant
+    - navigation.tabs
+    - toc.integrate
+    - content.tabs.link
+
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - abbr
+  - pymdownx.keys
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true 
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: 
+    - index.md
