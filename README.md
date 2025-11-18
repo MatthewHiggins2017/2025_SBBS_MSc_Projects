@@ -1,5 +1,8 @@
 # 2025 QMUL Project Allocation MSc 
 
+
+**Note** - Make sure to assign random project code prior to parsing TSV file using (add_project_random_codes.py script). 
+
 ## Creating the Index Page From Project TSV 
 
 The docs/index.md page is auto-generated from the tab-separated file at docs/data/Projects.tsv. No personal or project content is exposed in this README; only the column headers used for generation are shown.

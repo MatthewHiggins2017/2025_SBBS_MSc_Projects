@@ -75,7 +75,8 @@ def convert_tsv_to_markdown(tsv_path: Path, output_path: Path):
         
         md_content.append(f"\n<article class='{filter_class}' data-project-id='{idx}' data-programmes='{('ai,bioinf' if has_ai and has_bioinf else ('ai' if has_ai else ('bioinf' if has_bioinf else 'none')))}'>\n")
         title = project.get('Project title', 'Untitled').strip()
-        md_content.append(f"<h2 class='project-title'>Project {idx}: {title}</h2>\n")
+        assigned_code = project.get('Assigned_Code', f'{idx}').strip()
+        md_content.append(f"<h2 class='project-title'>{assigned_code}: {title}</h2>\n")
         
         # Supervisor information
         supervisor_name = project.get('Full name', '').strip()
@@ -152,7 +153,8 @@ def convert_tsv_to_markdown(tsv_path: Path, output_path: Path):
                 # Skip fields we've already handled
                 if field in ['Full name', 'Email address', 'School/Institute', 
                            'URL of research lab or profile page', 'Project title',
-                           'Project description', 'Would this project be suitable for a part time student?']:
+                           'Project description', 'Would this project be suitable for a part time student?',
+                           'Assigned_Code']:
                     continue
                 
                 formatted_field = field.replace('_', ' ').strip()
@@ -174,6 +176,21 @@ def convert_tsv_to_markdown(tsv_path: Path, output_path: Path):
     md_content.append("// Store current filter state\n")
     md_content.append("let currentFilter = 'all';\n")
     md_content.append("let currentSearchTerm = '';\n")
+    md_content.append("\n")
+    md_content.append("// Randomize project order on page load\n")
+    md_content.append("function shuffleProjects(){\n")
+    md_content.append("  const container = document.getElementById('projects-container');\n")
+    md_content.append("  const projects = Array.from(container.querySelectorAll('.project-card'));\n")
+    md_content.append("  \n")
+    md_content.append("  // Fisher-Yates shuffle\n")
+    md_content.append("  for(let i = projects.length - 1; i > 0; i--){\n")
+    md_content.append("    const j = Math.floor(Math.random() * (i + 1));\n")
+    md_content.append("    [projects[i], projects[j]] = [projects[j], projects[i]];\n")
+    md_content.append("  }\n")
+    md_content.append("  \n")
+    md_content.append("  // Re-append in shuffled order\n")
+    md_content.append("  projects.forEach(project => container.appendChild(project));\n")
+    md_content.append("}\n")
     md_content.append("\n")
     md_content.append("function filterProjects(button, filter){\n")
     md_content.append("  currentFilter = filter;\n")
@@ -210,6 +227,9 @@ def convert_tsv_to_markdown(tsv_path: Path, output_path: Path):
     md_content.append("\n")
     md_content.append("// Integrate with MkDocs search box in header\n")
     md_content.append("document.addEventListener('DOMContentLoaded', function(){\n")
+    md_content.append("  // Shuffle projects on page load\n")
+    md_content.append("  shuffleProjects();\n")
+    md_content.append("  \n")
     md_content.append("  // Header search (desktop)\n")
     md_content.append("  const headerSearch = document.querySelector('.md-search__input');\n")
     md_content.append("  if(headerSearch){\n")
