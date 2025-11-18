@@ -1,4 +1,4 @@
-site_name: QMUL  2026 MSc Project Allocation 
+site_name: QMUL  2026 MSc Projects 
 
 theme:
   name: material
@@ -12,6 +12,8 @@ theme:
     - navigation.tabs
     - toc.integrate
     - content.tabs.link
+
+plugins: []
 
 
 markdown_extensions:
