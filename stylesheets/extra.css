@@ -73,14 +73,6 @@
     color: var(--bone-beige-light) !important;
 }
 
-.md-search__input {
-    background-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-.md-search__input::placeholder {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
 /* Override navigation */
 .md-nav__link--active {
     color: var(--forest-green) !important;
@@ -123,38 +115,25 @@ body, .md-container, .md-content {
     }
 }
 
-/* Enhanced search box styling in header */
-.md-search__form {
-    background-color: rgba(255, 255, 255, 0.15) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.md-search__input {
-    color: white !important;
-}
-
-.md-search__input::placeholder {
-    color: rgba(255, 255, 255, 0.8) !important;
-}
-
-.md-search__input:focus {
-    background-color: rgba(255, 255, 255, 0.25) !important;
-}
+/* Completely hide navbar search (we use in-page search instead) */
+.md-header .md-search { display: none !important; }
+.md-search { display: none !important; }
+.md-search__overlay { display: none !important; }
+.md-search__inner { display: none !important; }
+.md-search__form { display: none !important; }
+.md-search__input { display: none !important; }
+.md-search__icon { display: none !important; }
 
 /* Hide MkDocs default search results */
 .md-search__output {
     display: none !important;
 }
 
-/* Mobile-friendly search: show in-page box, hide header search */
+/* Responsive header: no search box needed */
 .mobile-only { display: none; }
 @media (max-width: 1200px) {
-    .mobile-only { display: flex; }
-    /* Hide header search completely to avoid overlap */
-    .md-header .md-search,
-    .md-header__inner .md-search,
-    .md-header .md-search__form { display: none !important; }
-    .search-box-wrapper { margin-top: 8px; }
+    /* Header no longer needs to wrap since search is removed */
+    .md-header__inner { flex-wrap: nowrap; }
 }
 
 /* Smooth scroll behavior */
