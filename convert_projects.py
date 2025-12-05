@@ -29,14 +29,19 @@ def convert_tsv_to_markdown(tsv_path: Path, output_path: Path):
     md_content = ["<h1 style='text-align: center; font-weight: bold; margin-bottom: 20px; color: #000;'>2026 MSc Projects</h1>\n\n"]
     
     # Add instructional bullet points
-    md_content.append(" <strong>Welcome to the 2026 MSc Project Selection for the Bioinformatics and AI in Biosciences programmes.</strong>\n")
+    md_content.append(" <strong>Welcome to the 2026 MSc Project Selection for the Bioinformatics and AI in Biosciences programmes. </strong>\n")
     md_content.append("<ul class='instructions'>\n")
-    md_content.append("  <li>Please review the following projects and identify those that align with your interests.</li>\n")
-    md_content.append("  <li>Use the <b>search and filter options below</b> to find projects by keywords or programme.</li>\n")
-    md_content.append("  <li>We strongly recommend contacting the project supervisor to <b>arrange a meeting</b> before applying.</li>\n")
-    # Fix closing bold tag so the rest of the page is not bold
-    md_content.append("  <li>Once you have reviewed all projects, please submit your choices via <b><a href='https://forms.office.com/Pages/ResponsePage.aspx?id=kfCdVhOw40CG7r2cueJYFKvg-E8GH9tMslh7hj8OGVJUNE8zSVRQQVE0S0lOMTZJSEVaUkpEMlRFQS4u' target='_blank' rel='noopener noreferrer'>this link</a></b>.</li>\n")
+    md_content.append("  <li>Browse the available projects using the <b>search and filter options</b> below to find topics that match your interests.</li>\n")
+    md_content.append("  <li>You will submit <b>8 ranked project preferences</b>. We strongly recommend contacting supervisors to <b>arrange a meeting</b> before applying, especially for your top 3 choices.</li>\n")
+    md_content.append("  <li><b>Have you arranged a custom project with a supervisor?</b> If so, please ask them to email me (m.higgins@qmul.ac.uk) the project details by <strong>11th January</strong> so that you can be allocated directly and therefore will not need to choose from this list.</li>\n")
+
     md_content.append("</ul>\n\n")
+
+    # Call-to-action button section
+    md_content.append("<div class='cta-container'>\n")
+    md_content.append("  <h3>Submit your projects before the 11th of January deadline</h3>\n")
+    md_content.append("  <a href='https://forms.office.com/Pages/ResponsePage.aspx?id=kfCdVhOw40CG7r2cueJYFKvg-E8GH9tMslh7hj8OGVJUNE8zSVRQQVE0S0lOMTZJSEVaUkpEMlRFQS4u' target='_blank' rel='noopener noreferrer' class='cta-button'>Submit Your Project Choices</a>\n")
+    md_content.append("</div>\n\n")
 
     # Filter + search UI
     md_content.append("<div class='filter-container'>\n")
